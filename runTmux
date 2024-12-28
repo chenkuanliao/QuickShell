@@ -7,7 +7,7 @@ tmux_custom_zsh() {
     SESSION_NAME=${1:-custom-zsh}  # Use provided name or default to "custom-zsh"
     
     # Start new session with custom zshrc
-    ZDOTDIR="$CURRENT_DIR" tmux new-session -d -s "$SESSION_NAME" "ZDOTDIR='$CURRENT_DIR' zsh"
+    ZDOTDIR="$CURRENT_DIR" tmux new-session -d -s "$SESSION_NAME" "ZDOTDIR='$CURRENT_DIR'/my_rc_files zsh"
     
     # Attach to session
     tmux attach-session -t "$SESSION_NAME"
@@ -18,7 +18,7 @@ tmux_custom_bash() {
     SESSION_NAME=${1:-custom-bash}  # Use provided name or default to "custom-bash"
     
     # Start new session with custom bashrc
-    tmux new-session -d -s "$SESSION_NAME" "bash --rcfile '$CURRENT_DIR/.bashrc'"
+    tmux new-session -d -s "$SESSION_NAME" "bash --rcfile '$CURRENT_DIR/my_rc_files/.bashrc'"
     
     # Attach to session
     tmux attach-session -t "$SESSION_NAME"
