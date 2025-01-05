@@ -18,7 +18,8 @@ my_precmd() {
 add-zsh-hook precmd my_precmd
 
 # Set the prompt with cyan path and ~ for home directory (%~ instead of %d)
-PROMPT='%F{cyan}%~%f%1v $ '
+PROMPT='%F{cyan}%~%f%1v
+$ '
 
 
 # alias
