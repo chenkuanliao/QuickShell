@@ -7,7 +7,10 @@ tmux_custom_zsh() {
     SESSION_NAME=${1:-custom-zsh}  # Use provided name or default to "custom-zsh"
     
     # Start new session with custom zshrc
-    ZDOTDIR="$CURRENT_DIR" tmux new-session -d -s "$SESSION_NAME" "ZDOTDIR='$CURRENT_DIR'/my_rc_files zsh"
+    # ZDOTDIR="$CURRENT_DIR" tmux new-session -d -s "$SESSION_NAME" "ZDOTDIR='$CURRENT_DIR'/my_rc_files zsh"
+
+    ZDOTDIR="$CURRENT_DIR" tmux -f "$CURRENT_DIR/my_files/.tmux.conf" new-session -d -s "$SESSION_NAME" \
+        "ZDOTDIR='$CURRENT_DIR'/my_files VIMINIT='source $CURRENT_DIR/my_files/.vimrc' zsh"
     
     # Attach to session
     tmux attach-session -t "$SESSION_NAME"
@@ -18,14 +21,16 @@ tmux_custom_bash() {
     SESSION_NAME=${1:-custom-bash}  # Use provided name or default to "custom-bash"
     
     # Start new session with custom bashrc
-    tmux new-session -d -s "$SESSION_NAME" "bash --rcfile '$CURRENT_DIR/my_rc_files/.bashrc'"
+    # tmux new-session -d -s "$SESSION_NAME" "bash --rcfile '$CURRENT_DIR/my_rc_files/.bashrc'"
+    tmux -f "$CURRENT_DIR/my_files/.tmux.conf" new-session -d -s "$SESSION_NAME" \
+        "VIMINIT='source $CURRENT_DIR/my_files/.vimrc' bash --rcfile '$CURRENT_DIR/my_files/.bashrc'"
+    
     
     # Attach to session
     tmux attach-session -t "$SESSION_NAME"
 }
 
 # # Run the function
-# tmux_custom "$@"
 
 if [[ "$SHELL" == *"zsh"* ]]; then
     tmux_custom_zsh "$@"
