@@ -1,14 +1,15 @@
 #!/bin/bash
 
 CURRENT_DIR=$(pwd)
+DOT_DIR=$CURRENT_DIR/my_files
 
 # Function to handle tmux session creation for zsh
 tmux_custom_zsh() {
     SESSION_NAME=${1:-MyZsh}  # Use provided name or default to "MyZsh"
 
-    ZDOTDIR=$CURRENT_DIR/my_files
-    tmux -f "$ZDOTDIR/.tmux.conf" new-session -d -s "$SESSION_NAME" \
-        "ZDOTDIR='$ZDOTDIR' VIMINIT='source $ZDOTDIR/.vimrc' zsh"
+    # ZDOTDIR=$CURRENT_DIR/my_files
+    tmux -f "$DOT_DIR/.tmux.conf" new-session -d -s "$SESSION_NAME" \
+        "ZDOTDIR='$DOT_DIR' VIMINIT='source $DOT_DIR/.vimrc' zsh"
     
     # Attach to session
     tmux attach-session -t "$SESSION_NAME"
@@ -18,9 +19,8 @@ tmux_custom_zsh() {
 tmux_custom_bash() {
     SESSION_NAME=${1:-MyBash}  # Use provided name or default to "MyBash"
     
-    # Start new session with custom bashrc
-    tmux -f "$CURRENT_DIR/my_files/.tmux.conf" new-session -d -s "$SESSION_NAME" \
-        "VIMINIT='source $CURRENT_DIR/my_files/.vimrc' bash --rcfile '$CURRENT_DIR/my_files/.bashrc'"
+    tmux -f "$DOT_DIR/.tmux.conf" new-session -d -s "$SESSION_NAME" \
+        "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
     
     
     # Attach to session
