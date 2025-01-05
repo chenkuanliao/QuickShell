@@ -22,7 +22,6 @@ tmux_custom_bash() {
     tmux -f "$DOT_DIR/.tmux.conf" new-session -d -s "$SESSION_NAME" \
         "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
     
-    
     # Attach to session
     tmux attach-session -t "$SESSION_NAME"
 }
