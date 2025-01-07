@@ -3,7 +3,7 @@ import socketserver
 import os
 
 PORT = 8000
-PROJECT_DIR = "/Users/brianliao/Documents/Projects/QuickShell"
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
