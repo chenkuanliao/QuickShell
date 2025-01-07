@@ -1,0 +1,17 @@
+# listing out the sessions
+tmux ls 
+
+# create a new window
+press `ctrl + b`, then `c`
+
+# switch to the next window
+press `ctrl + b`, then `n`
+
+# switch to the previous window
+press `ctrl + b`, then `p`
+
+# switch to a specific window
+press `ctrl + b`, then the window number (0, 1, 2, etc.)
+
+# close to the current window
+type `exit`

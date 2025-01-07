@@ -21,7 +21,17 @@ add-zsh-hook precmd my_precmd
 PROMPT='%F{cyan}%~%f%1v
 $ '
 
-
 # alias
 alias hi="echo 'hi there, this is a testing commend to see if this works'"
-alias gits="git status"
+
+# commands for git
+alias gs="git status"
+alias gl="git log"
+alias ga="git add"
+alias gap="git add -p"
+alias gpull="git push"
+alias gc="git commit -m"
+alias gpush="git push"
+
+# helper tools
+alias htmux='function _helper() { grep -A 1 "$1" "$MY_FILES/helperTmux.txt"; }; _helper'

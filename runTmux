@@ -8,30 +8,23 @@ tmux_custom_zsh() {
     SESSION_NAME=${1:-MyZsh}  # Use provided name or default to "MyZsh"
 
     # ZDOTDIR=$CURRENT_DIR/my_files
-    tmux -f "$DOT_DIR/.tmux.conf" new-session -d -s "$SESSION_NAME" \
+    tmux -f "$DOT_DIR/.tmux.conf" new-session -e MY_FILES="$DOT_DIR" -d -s "$SESSION_NAME" \
         "ZDOTDIR='$DOT_DIR' VIMINIT='source $DOT_DIR/.vimrc' zsh"
     tmux set-option -t "$SESSION_NAME" default-command "ZDOTDIR='$DOT_DIR' VIMINIT='source $DOT_DIR/.vimrc' zsh"
-    
-    # Attach to session
-    tmux attach-session -t "$SESSION_NAME"
 }
 
 # Function to handle tmux session creation for bash
 tmux_custom_bash() {
     SESSION_NAME=${1:-MyBash}  # Use provided name or default to "MyBash"
     
-    tmux -f "$DOT_DIR/.tmux.conf" new-session -d -s "$SESSION_NAME" \
+    tmux -f "$DOT_DIR/.tmux.conf" new-session -e MY_FILES="$DOT_DIR" -d -s "$SESSION_NAME" \
         "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
     
     # Set default-command for the entire session
     tmux set-option -t "$SESSION_NAME" default-command "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
-    
-    # Attach to session
-    tmux attach-session -t "$SESSION_NAME"
 }
 
-# # Run the function
-
+# Run the function
 if [[ "$SHELL" == *"zsh"* ]]; then
     tmux_custom_zsh "$@"
 elif [[ "$SHELL" == *"bash"* ]]; then
