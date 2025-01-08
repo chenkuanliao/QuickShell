@@ -8,7 +8,7 @@ ls
 if [[ "$SHELL" == *"zsh"* ]]; then
     MY_SHELL="zsh"
 elif [[ "$SHELL" == *"bash"* ]]; then
-    MY_SHELL="zsh"
+    MY_SHELL="bash"
 else
     echo "Unsupported shell: $SHELL"
     MY_SHELL="unsupported"
