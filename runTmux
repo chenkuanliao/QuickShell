@@ -20,7 +20,7 @@ tmux_custom_bash() {
         "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
     
     # Set default-command for the entire session
-    tmux set-option -t "$SESSION_NAME" default-command "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
+    tmux set-option -t "$SESSION_NAME" default-command "TMUX_CONF='$DOT_DIR/.tmux.conf' VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
 }
 
 # Run the function
