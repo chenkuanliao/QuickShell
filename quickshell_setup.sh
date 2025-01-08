@@ -5,14 +5,27 @@ mkdir -p my_files
 
 ls
 
-if [ "$SHELL" == *"zsh"* ]; then
-    MY_SHELL="zsh"
-elif [ "$SHELL" == *"bash"* ]; then
-    MY_SHELL="bash"
-else
-    echo "Unsupported shell: $SHELL"
-    MY_SHELL="unsupported"
-fi
+# if [[ "$SHELL" == *"zsh"* ]]; then
+#     MY_SHELL="zsh"
+# elif [[ "$SHELL" == *"bash"* ]]; then
+#     MY_SHELL="bash"
+# else
+#     echo "Unsupported shell: $SHELL"
+#     MY_SHELL="unsupported"
+# fi
+
+case "$SHELL" in
+    *zsh*)
+        MY_SHELL="zsh"
+        ;;
+    *bash*)
+        MY_SHELL="bash"
+        ;;
+    *)
+        echo "Unsupported shell: $SHELL"
+        MY_SHELL="unsupported"
+        ;;
+esac
 
 # Download necessary files
 your_static_ip=127.0.0.1
