@@ -1,5 +1,22 @@
-# listing out the sessions
-tmux ls 
+# starting Tmux with a new session
+tmux
+
+# starting Tmux with a new session with a specific name 
+tmux new -s {session_name}
+
+# list the sessions
+tmux ls
+
+# attach to a session
+tmux attach -t {session_name}
+
+# if you want to attach to the latest session, run
+tmux attach
+
+# Scroll mode 
+press `ctrl + b`, then `[`
+you will then be able to scroll with up and down arrows
+to quit, press `q`
 
 # create a new window
 press `ctrl + b`, then `c`
@@ -15,3 +32,26 @@ press `ctrl + b`, then the window number (0, 1, 2, etc.)
 
 # close to the current window
 type `exit`
+
+# rename current window
+type `ctrl + b`, then `,`
+
+## pane management
+# split the window vertically
+press `ctrl + b`, then `%`
+
+# split the window horizontally
+press `ctrl + b`, then `"`
+
+# switch between panes
+press `ctrl + b`, then use the arrow keys to navigate between panes
+
+# resize panes
+press `ctrl + b`, then hold `ctrl` and use the arrow keys to resize
+
+# close the current pane
+type `exit`
+
+
+
+
