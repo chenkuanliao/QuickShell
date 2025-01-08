@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 CURRENT_DIR=$(pwd)
 DOT_DIR=$CURRENT_DIR/my_files

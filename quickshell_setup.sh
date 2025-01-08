@@ -1,18 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 # Create my_files directory if it doesn't exist
 mkdir -p my_files
-
-ls
-
-# if [[ "$SHELL" == *"zsh"* ]]; then
-#     MY_SHELL="zsh"
-# elif [[ "$SHELL" == *"bash"* ]]; then
-#     MY_SHELL="bash"
-# else
-#     echo "Unsupported shell: $SHELL"
-#     MY_SHELL="unsupported"
-# fi
 
 case "$SHELL" in
     *zsh*)
