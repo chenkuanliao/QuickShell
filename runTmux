@@ -24,10 +24,14 @@ tmux_custom_bash() {
 }
 
 # Run the function
-if [[ "$SHELL" == *"zsh"* ]]; then
+case "$SHELL" in
+    *zsh*)
     tmux_custom_zsh "$@"
-elif [[ "$SHELL" == *"bash"* ]]; then
+        ;;
+    *bash*)
     tmux_custom_bash "$@"
-else
+        ;;
+    *)
     echo "Unsupported shell: $SHELL"
-fi
+        ;;
+esac
