@@ -19,6 +19,7 @@ esac
 # Download necessary files
 your_static_ip=127.0.0.1
 wget $your_static_ip:8000/runTmux
+wget $your_static_ip:8000/my_files/.vimrc -O my_files/.vimrc
 wget $your_static_ip:8000/my_files/.bashrc -O my_files/.bashrc
 wget $your_static_ip:8000/my_files/.tmux.conf -O my_files/.tmux.conf
 wget $your_static_ip:8000/my_files/.zshrc -O my_files/.zshrc
