@@ -40,7 +40,9 @@ cleanup() {
 }
 
 # Set trap to run cleanup on exit
-trap cleanup EXIT
+# trap cleanup EXIT
+trap 'cleanup; exit' EXIT INT TERM
+
 
 # Attach to the tmux session
 if [ -n "$TMUX" ]; then
