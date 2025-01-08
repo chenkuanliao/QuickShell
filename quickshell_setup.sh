@@ -3,6 +3,8 @@
 # Create my_files directory if it doesn't exist
 mkdir -p my_files
 
+ls
+
 if [[ "$SHELL" == *"zsh"* ]]; then
     MY_SHELL="zsh"
 elif [[ "$SHELL" == *"bash"* ]]; then
@@ -61,11 +63,11 @@ else
     echo "**** Important ****"
     echo "Please note that you should only exit this script, by doing Ctrl+c, when you are done with the tmux session you created."
     echo "Otherwise, the format could be corrupted."
-
-    # Keep the script running until the user exits
-    while true; do
-        sleep 1
-    done
 fi
+
+# Keep the script running until the user exits
+while true; do
+    sleep 1
+done
 
 # The script will end here when the user detaches or exits the tmux session
