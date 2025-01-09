@@ -18,7 +18,6 @@ let g:solarized_termtrans=1
 " Set tab width to 4 columns.
 :set tabstop=4
 
-
 " Remap 'jk' to Escape in insert mode
 inoremap jk <Esc>
 

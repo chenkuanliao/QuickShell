@@ -44,14 +44,10 @@ press `ctrl + b`, then `%`
 press `ctrl + b`, then `"`
 
 # switch between panes
-press `ctrl + b`, then use the arrow keys to navigate between panes
+press `ctrl + b`, then use the arrow keys (hjkl) to navigate between panes
 
 # resize panes
 press `ctrl + b`, then hold `ctrl` and use the arrow keys to resize
 
 # close the current pane
 type `exit`
-
-
-
-

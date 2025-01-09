@@ -3,12 +3,13 @@
 # Create my_files directory if it doesn't exist
 mkdir -p my_files
 
+# detect the current shell
 case "$SHELL" in
     *zsh*)
-        MY_SHELL="zsh"
+        MY_SHELL="Zsh"
         ;;
     *bash*)
-        MY_SHELL="bash"
+        MY_SHELL="Bash"
         ;;
     *)
         echo "Unsupported shell: $SHELL"
@@ -17,7 +18,7 @@ case "$SHELL" in
 esac
 
 # Download necessary files
-your_static_ip=127.0.0.1
+your_static_ip=127.0.0.1 # TODO: update this ip to your static ip that is hosting QuickShell
 wget $your_static_ip:8000/runTmux
 wget $your_static_ip:8000/my_files/.vimrc -O my_files/.vimrc
 wget $your_static_ip:8000/my_files/.bashrc -O my_files/.bashrc
@@ -41,9 +42,7 @@ cleanup() {
 }
 
 # Set trap to run cleanup on exit
-# trap cleanup EXIT
 trap 'cleanup; exit' EXIT INT TERM
-
 
 # Attach to the tmux session
 if [ -n "$TMUX" ]; then
@@ -52,7 +51,7 @@ if [ -n "$TMUX" ]; then
     tmux switch-client -t "My$MY_SHELL"
 else
     # If not in a tmux session, provide instructions to the user
-    clear  # Clear the screen for cleaner output
+    clear
     echo "Setup complete. "
     echo "To attach to the tmux session, open a new terminal and run:"
     echo ""
@@ -61,9 +60,12 @@ else
     echo "After attaching, you can detach from the session using Ctrl-B followed by D"
     echo "To end the session completely, type 'exit' when attached to the session"
     echo ""
+    echo ""
     echo "To clean up for this session (remove all the files downloaded for QuickSHell), do"
     echo ""
     echo "  Ctrl+c"
+    echo ""
+    echo ""
     echo ""
     echo "**** Important ****"
     echo "Please note that you should only exit this script, by doing Ctrl+c, when you are done with the tmux session you created."

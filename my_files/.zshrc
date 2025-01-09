@@ -21,7 +21,7 @@ add-zsh-hook precmd my_precmd
 PROMPT='%F{cyan}%~%f%1v
 $ '
 
-# alias
+# my alias
 alias hi="echo 'hi there, this is a testing commend to see if this works'"
 
 # commands for git
