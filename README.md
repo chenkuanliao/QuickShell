@@ -116,6 +116,6 @@ To exit the script, do `Ctrl+c` and that will clean up the files.
 ## DEMO
 for DEMO purposes, I am hosting the conatiner on my localhost
 ### Running it in a tmux session (recommanded)
-![DEMO in shell](/others/QuickShell%20Demo%20with%20Tmux.gif.gif)
+![DEMO in shell](/others/QuickShell%20Demo%20with%20Tmux.gif)
 ### Running it directly in the shell
 ![DEMO in shell](/others/QuickShell%20Demo%20without%20Tmux.gif)
