@@ -115,16 +115,17 @@ To exit the script, do `Ctrl+c` and that will clean up the files.
 ### Setting up your own environment
 All the personalized config files are in the `my_files` directory.
 
-Currently, QuickShell supports `zsh` and `bash`. The `my_files` directory consists of the following files
+Currently, QuickShell supports `zsh`, `csh`, and `bash`. The `my_files` directory consists of the following files
 - `.bashrc`
 - `.zshrc`
 - `.tmux.conf`
 - `.vimrc`
+- `.cshrc`
 - `helperTmux.txt`
 
-The first four files are just config files, and you can always replace them with your own personalized files
+The first five files are just config files, and you can always replace them with your own personalized files
 
-The `helperTmux.txt` file is a file I use to get informations about commands for Tmux. There is a function/alias called `htmux` in `bashrc` and `.zshrc` that uses this file to return the information.
+The `helperTmux.txt` file is a file I use to get informations about commands for Tmux. There is a function/alias called `htmux` in `.bashrc`, `.cshrc`, and `.zshrc` that uses this file to return the information.
 
 
 ## DEMO

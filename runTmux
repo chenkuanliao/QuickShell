@@ -25,6 +25,18 @@ tmux_custom_bash() {
     tmux set-option -t "$SESSION_NAME" default-command "TMUX_CONF='$DOT_DIR/.tmux.conf' VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
 }
 
+# Function to handle tmux session creation for csh
+tmux_custom_csh() {
+    SESSION_NAME=${1:-MyCsh}  # Use provided name or default to "MyCsh"
+    
+    tmux new-session -e MY_FILES="$DOT_DIR" -d -s "$SESSION_NAME" \
+        "setenv VIMINIT 'source $DOT_DIR/.vimrc'; csh -f -c 'source $DOT_DIR/.cshrc'"
+    
+    tmux source-file -t "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
+    tmux set-option -t "$SESSION_NAME" default-command "setenv VIMINIT 'source $DOT_DIR/.vimrc'; setenv TMUX_CONF '$DOT_DIR/.tmux.conf'; csh -f -c 'source $DOT_DIR/.cshrc'"
+}
+
+
 # Run the function
 case "$SHELL" in
     *zsh*)
@@ -33,7 +45,10 @@ case "$SHELL" in
     *bash*)
     tmux_custom_bash "$@"
         ;;
+    *csh*)
+        tmux_custom_csh "$@"
+        ;;
     *)
-    echo "Unsupported shell: $SHELL"
+        echo "Unsupported shell: $SHELL"
         ;;
 esac

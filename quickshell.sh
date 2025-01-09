@@ -14,6 +14,9 @@ if hash tmux 2>/dev/null; then
         *bash*)
             MY_SHELL="Bash"
             ;;
+        *csh*)
+            MY_SHELL="Csh"
+            ;;
         *)
             echo "Unsupported shell: $SHELL"
             MY_SHELL="unsupported"
