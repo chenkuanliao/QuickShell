@@ -21,7 +21,7 @@ cd QuickShell
 
 ## Usage
 ### Setting up the server
-The first thing is to update the ip for your machine in `quickshell_setup.sh`.
+The first thing is to update the ip for your machine in `quickshell.sh`.
 
 Update `your_static_ip` in the code
 ```
@@ -29,12 +29,12 @@ Update `your_static_ip` in the code
 
 # Download necessary files
 your_static_ip=127.0.0.1 # TODO: update this ip to your static ip that is hosting QuickShell
-wget $your_static_ip:8000/runTmux
-wget $your_static_ip:8000/my_files/.vimrc -O my_files/.vimrc
-wget $your_static_ip:8000/my_files/.bashrc -O my_files/.bashrc
-wget $your_static_ip:8000/my_files/.tmux.conf -O my_files/.tmux.conf
-wget $your_static_ip:8000/my_files/.zshrc -O my_files/.zshrc
-wget $your_static_ip:8000/my_files/helperTmux.txt -O my_files/helperTmux.txt
+wget $your_static_ip:8000/runTmux -O QuickShellRun
+wget $your_static_ip:8000/my_files/.vimrc -O QuickShellMyFiles/.vimrc
+wget $your_static_ip:8000/my_files/.bashrc -O QuickShellMyFiles/.bashrc
+wget $your_static_ip:8000/my_files/.tmux.conf -O QuickShellMyFiles/.tmux.conf
+wget $your_static_ip:8000/my_files/.zshrc -O QuickShellMyFiles/.zshrc
+wget $your_static_ip:8000/my_files/helperTmux.txt -O QuickShellMyFiles/helperTmux.txt
 
 ... code below ...
 ```
@@ -60,30 +60,30 @@ Once you have your server running, now you can try using QuickShell on other mac
 
 Run
 ```
-wget -O- http://{your_host_ip_or_domain}:8000/quickshell_setup.sh | sh
+wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh
 ```
 
 > make sure to replace `your_host_ip_or_domain` with your host's ip or domain
 
 #### Two modes when running QuickShell
-Due to how QuickShell is set up, the clean up script is ran when the `quickshell_setup.sh` script is being exited.
+Due to how QuickShell is set up, the clean up script is ran when the `quickshell.sh` script is being exited.
 
-Having the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell_setup.sh | sh` command being ran in a tmux session is safer as you won't accidentally exit the script and clean up the files needed for QuickShell.
+Having the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command being ran in a tmux session is safer as you won't accidentally exit the script and clean up the files needed for QuickShell.
 
 
 ##### Running it in a tmux session (recommanded)
-This means that you will be running the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell_setup.sh | sh` command in a tmux session you created
+This means that you will be running the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command in a tmux session you created
 
 After running the script, you will be switched to the new Tmux session that runs the QuickShell environment, and you can enjoy your presonalized shell from there!
 
-When you are done and exited from the QuickShell session, you will need to go back to the tmux session you used to run the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell_setup.sh | sh` command. 
+When you are done and exited from the QuickShell session, you will need to go back to the tmux session you used to run the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command. 
 
 > You can run `tmux ls` to check the sessions you are running and run `tmux attach-session -t {session_name}` to attach to that session
 
 To exit the script, do `Ctrl+c` and that will clean up the files.
 
 ##### Running it directly in the shell
-This means that you will be running the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell_setup.sh | sh` command in the shell 
+This means that you will be running the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command in the shell 
 
 After running the script, you will be prompted something like
 ```
@@ -109,7 +109,7 @@ Otherwise, the format could be corrupted.
 
 You should then launch a new shell and run `tmux attach-session -t MyZsh` (the session name could change depending on the shell you are using), and you can enjoy your presonalized shell from there!
 
-When you are done and exited from the QuickShell session, you will need to go back to the shell you used to run the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell_setup.sh | sh` command. 
+When you are done and exited from the QuickShell session, you will need to go back to the shell you used to run the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command. 
 
 To exit the script, do `Ctrl+c` and that will clean up the files.
 

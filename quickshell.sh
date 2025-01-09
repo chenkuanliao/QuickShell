@@ -3,8 +3,8 @@
 # Check if tmux is installed
 if hash tmux 2>/dev/null; then
     # If tmux is installed, proceed with the setup
-    # Create my_files directory if it doesn't exist
-    mkdir -p my_files
+    # Create QuickShellMyFiles directory if it doesn't exist
+    mkdir -p QuickShellMyFiles
 
     # detect the current shell
     case "$SHELL" in
@@ -22,26 +22,26 @@ if hash tmux 2>/dev/null; then
 
     # Download necessary files
     your_static_ip=127.0.0.1 # TODO: update this ip to your static ip that is hosting QuickShell
-    wget $your_static_ip:8000/runTmux
-    wget $your_static_ip:8000/my_files/.vimrc -O my_files/.vimrc
-    wget $your_static_ip:8000/my_files/.bashrc -O my_files/.bashrc
-    wget $your_static_ip:8000/my_files/.tmux.conf -O my_files/.tmux.conf
-    wget $your_static_ip:8000/my_files/.zshrc -O my_files/.zshrc
-    wget $your_static_ip:8000/my_files/helperTmux.txt -O my_files/helperTmux.txt
+    wget $your_static_ip:8000/runTmux -O QuickShellRun
+    wget $your_static_ip:8000/my_files/.vimrc -O QuickShellMyFiles/.vimrc
+    wget $your_static_ip:8000/my_files/.bashrc -O QuickShellMyFiles/.bashrc
+    wget $your_static_ip:8000/my_files/.tmux.conf -O QuickShellMyFiles/.tmux.conf
+    wget $your_static_ip:8000/my_files/.zshrc -O QuickShellMyFiles/.zshrc
+    wget $your_static_ip:8000/my_files/helperTmux.txt -O QuickShellMyFiles/helperTmux.txt
 
-    # Make runTmux executable
-    chmod +x runTmux
+    # Make QuickShellRun executable
+    chmod +x QuickShellRun
 
     # Run the tmux session
-    ./runTmux "My$MY_SHELL" &
+    ./QuickShellRun "My$MY_SHELL" &
 
     # Wait for the tmux session to start
     sleep 1
 
     # Cleanup function
     cleanup() {
-        rm -rf runTmux my_files
-        rm -f quickshell_setup.sh
+        rm -rf QuickShellRun QuickShellMyFiles
+        rm -f quickshell.sh
     }
 
     # Set trap to run cleanup on exit
@@ -64,7 +64,7 @@ if hash tmux 2>/dev/null; then
         echo "To end the session completely, type 'exit' when attached to the session"
         echo ""
         echo ""
-        echo "To clean up for this session (remove all the files downloaded for QuickSHell), do"
+        echo "To clean up for this session (remove all the files downloaded for QuickShell), do"
         echo ""
         echo "  Ctrl+c"
         echo ""

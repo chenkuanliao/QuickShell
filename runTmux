@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CURRENT_DIR=$(pwd)
-DOT_DIR=$CURRENT_DIR/my_files
+DOT_DIR=$CURRENT_DIR/QuickShellMyFiles
 
 # Function to handle tmux session creation for zsh
 tmux_custom_zsh() {
