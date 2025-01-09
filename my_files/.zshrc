@@ -21,6 +21,16 @@ add-zsh-hook precmd my_precmd
 PROMPT='%F{cyan}%~%f%1v
 $ '
 
+# Initialize zsh completion system
+autoload -Uz compinit
+compinit
+# Enable case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# Automatically list completion options when there are multiple matches
+zstyle ':completion:*' menu select
+# Complete file and directory names
+zstyle ':completion:*' file-patterns '*:all-files'
+
 # my alias
 alias hi="echo 'hi there, this is a testing commend to see if this works'"
 alias ll='ls -alF'
