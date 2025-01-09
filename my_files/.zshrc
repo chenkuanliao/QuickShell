@@ -23,6 +23,7 @@ $ '
 
 # my alias
 alias hi="echo 'hi there, this is a testing commend to see if this works'"
+alias ll='ls -alF'
 
 # commands for git
 alias gs="git status"

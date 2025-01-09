@@ -18,6 +18,7 @@ alias gap="git add -p"
 alias gpull="git push"
 alias gc="git commit -m"
 alias gpush="git push"
+alias ll='ls -alF'
 
 # helper tools
 # Helper function for tmux commands
