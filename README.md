@@ -10,7 +10,6 @@ How does it work? You host a Docker container running a Python server on your ma
 - wget
 - a machine that has a static ip (you need a static ip so that you can curl the package from other machines)
 
-> ![NOTE]
 > some big companies like Amazon, Oracle offer free tier plans to host vm instances that has static ips. So if you don't have a machine that has a static ip and don't plan on paying, feel free to check those out
 
 ### Installing from source
@@ -112,6 +111,21 @@ You should then launch a new shell and run `tmux attach-session -t MyZsh` (the s
 When you are done and exited from the QuickShell session, you will need to go back to the shell you used to run the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command. 
 
 To exit the script, do `Ctrl+c` and that will clean up the files.
+
+### Setting up your own environment
+All the personalized config files are in the `my_files` directory.
+
+Currently, QuickShell supports `zsh` and `bash`. The `my_files` directory consists of the following files
+- `.bashrc`
+- `.zshrc`
+- `.tmux.conf`
+- `.vimrc`
+- `helperTmux.txt`
+
+The first four files are just config files, and you can always replace them with your own personalized files
+
+The `helperTmux.txt` file is a file I use to get informations about commands for Tmux. There is a function/alias called `htmux` in `bashrc` and `.zshrc` that uses this file to return the information.
+
 
 ## DEMO
 for DEMO purposes, I am hosting the conatiner on my localhost
