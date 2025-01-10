@@ -3,9 +3,8 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-# Set up the prompt with cyan path and git branch
-PS1='\[\e[36m\]\w\[\e[0m\]$(parse_git_branch) 
-$ '
+# Set up the prompt with green username@domain, cyan path (with ~ for home) and git branch
+PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[36m\]\w\[\e[0m\]$(parse_git_branch)\n$ '
 
 # Enable programmable completion features
 if ! shopt -oq posix; then

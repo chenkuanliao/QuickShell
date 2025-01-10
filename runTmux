@@ -46,7 +46,7 @@ case "$SHELL" in
     tmux_custom_bash "$@"
         ;;
     *csh*)
-        tmux_custom_csh "$@"
+    tmux_custom_csh "$@"
         ;;
     *)
         echo "Unsupported shell: $SHELL"

@@ -17,8 +17,8 @@ my_precmd() {
 # Add the precmd hook
 add-zsh-hook precmd my_precmd
 
-# Set the prompt with cyan path and ~ for home directory (%~ instead of %d)
-PROMPT='%F{cyan}%~%f%1v
+# Set the prompt with username@domain in green, cyan path and ~ for home directory (%~ instead of %d)
+PROMPT='%F{green}%n@%m%f %F{cyan}%~%f%1v
 $ '
 
 # Initialize zsh completion system
