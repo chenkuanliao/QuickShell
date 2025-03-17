@@ -10,7 +10,7 @@ tmux_custom_zsh() {
     tmux new-session -e MY_FILES="$DOT_DIR" -d -s "$SESSION_NAME" \
         "ZDOTDIR='$DOT_DIR' VIMINIT='source $DOT_DIR/.vimrc' zsh"
 
-    tmux source-file -t "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
+    tmux source-file "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
     tmux set-option -t "$SESSION_NAME" default-command "ZDOTDIR='$DOT_DIR' VIMINIT='source $DOT_DIR/.vimrc' zsh"
 }
 
@@ -21,7 +21,7 @@ tmux_custom_bash() {
     tmux new-session -e MY_FILES="$DOT_DIR" -d -s "$SESSION_NAME" \
         "VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
     
-    tmux source-file -t "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
+    tmux source-file "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
     tmux set-option -t "$SESSION_NAME" default-command "TMUX_CONF='$DOT_DIR/.tmux.conf' VIMINIT='source $DOT_DIR/.vimrc' bash --rcfile '$DOT_DIR/.bashrc'"
 }
 
@@ -32,7 +32,7 @@ tmux_custom_csh() {
     tmux new-session -e MY_FILES="$DOT_DIR" -d -s "$SESSION_NAME" \
         "setenv VIMINIT 'source $DOT_DIR/.vimrc'; csh -f -c 'source $DOT_DIR/.cshrc'"
     
-    tmux source-file -t "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
+    tmux source-file "$SESSION_NAME" "$DOT_DIR/.tmux.conf"
     tmux set-option -t "$SESSION_NAME" default-command "setenv VIMINIT 'source $DOT_DIR/.vimrc'; setenv TMUX_CONF '$DOT_DIR/.tmux.conf'; csh -f -c 'source $DOT_DIR/.cshrc'"
 }
 
