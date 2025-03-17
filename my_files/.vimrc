@@ -18,8 +18,11 @@ let g:solarized_termtrans=1
 " setting cursorline
 :set cursorline
 
-" Set tab width to 4 columns.
-:set tabstop=4
+" setting tabs
+:set expandtab
+:set tabstop=2
+:set softtabstop=2
+:set shiftwidth=2
 
 " Remap 'jk' to Escape in insert mode
 inoremap jk <Esc>
