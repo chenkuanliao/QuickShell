@@ -21,6 +21,9 @@ let g:solarized_termtrans=1
 " Remap 'jk' to Escape in insert mode
 inoremap jk <Esc>
 
+" Remap 'jkf' to Escape in insert mode
+vnoremap jkf <Esc>
+
 " making life easier
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
