@@ -31,5 +31,9 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+cabbrev ex Explore
+cabbrev sex Sexplore
+cabbrev vex Vexplore
+
 " custom commands
 command Open Texplore
