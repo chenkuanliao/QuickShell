@@ -6,6 +6,8 @@ PORT = 8000
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
+    timeout = 30  # seconds per request, prevents hung connections
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=PROJECT_DIR, **kwargs)
 
@@ -16,8 +18,10 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             return None
         return path
 
-Handler = CustomHandler
+class ThreadedHTTPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    allow_reuse_address = True
+    daemon_threads = True
 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
+with ThreadedHTTPServer(("", PORT), CustomHandler) as httpd:
     print(f"Serving files from {PROJECT_DIR} at port {PORT}")
     httpd.serve_forever()
