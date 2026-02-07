@@ -22,7 +22,6 @@ if [ -n "$BASH_VERSION" ] && echo "$-" | grep -q i; then
   bind "set show-all-if-unmodified on"
   # Configure file completion
   complete -d cd
-  complete -f
 fi
 
 # my alias 
