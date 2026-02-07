@@ -139,7 +139,11 @@ echo "To uninstall and restore your original configs, run:"
 echo ""
 echo "  qsrestore"
 echo ""
-
-# Launch a new interactive shell so configs take effect immediately
-echo "Launching a new shell with your configs..."
-exec "$SHELL" < /dev/tty
+echo "To apply your new configs in the current shell, run:"
+echo ""
+case "$SHELL" in
+    */zsh)  echo "  source ~/.zshrc" ;;
+    */csh|*/tcsh) echo "  source ~/.cshrc" ;;
+    *)      echo "  source ~/.bashrc" ;;
+esac
+echo ""
