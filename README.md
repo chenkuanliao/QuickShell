@@ -1,7 +1,10 @@
 # QuickShell
 QuickShell is a solution for those who often find themselves in situations where they need to work on machines that are not their own. Imagine being able to access your personalized environment settings and tools from anywhere, without having to spend time setting up the environment from scratch. That's exactly what QuickShell offers.
 
-How does it work? You host a Docker container running a Python server on your machine, and when you need your personalized environment settings on another machine, you simply run a command and it will boot up a Tmux environment with the settings you've set up. The best part is that when you're done with the Tmux session, you just exit the script and the files you downloaded to boot up the personalized environment will be cleaned up for you, just like you never changed any settings.
+How does it work? You host a Docker container running a Python server on your machine, and when you need your personalized environment settings on another machine, you simply run a command. QuickShell offers two modes:
+
+1. **Tmux mode** — Boots up a Tmux environment with your settings. When you're done, exit the script and all downloaded files are cleaned up automatically, just like you never changed any settings.
+2. **Install mode** — Directly installs your configs to the standard locations (`~/.bashrc`, `~/.vimrc`, etc.) for long-term use. Your original configs are backed up, and a restore script is provided to undo everything when you're done.
 
 ## Installation
 ### Requirements:
@@ -20,22 +23,11 @@ cd QuickShell
 
 ## Usage
 ### Setting up the server
-The first thing is to update the ip for your machine in `quickshell.sh`.
+The first thing is to update the ip for your machine in `quickshell.sh` and `quickshell_install.sh`.
 
-Update `your_static_ip` in the code
+Update `your_static_ip` in both files
 ```
-... code above ...
-
-# Download necessary files
 your_static_ip=127.0.0.1 # TODO: update this ip to your static ip that is hosting QuickShell
-wget $your_static_ip:8000/runTmux -O QuickShellRun
-wget $your_static_ip:8000/my_files/.vimrc -O QuickShellMyFiles/.vimrc
-wget $your_static_ip:8000/my_files/.bashrc -O QuickShellMyFiles/.bashrc
-wget $your_static_ip:8000/my_files/.tmux.conf -O QuickShellMyFiles/.tmux.conf
-wget $your_static_ip:8000/my_files/.zshrc -O QuickShellMyFiles/.zshrc
-wget $your_static_ip:8000/my_files/helperTmux.txt -O QuickShellMyFiles/helperTmux.txt
-
-... code below ...
 ```
 
 Once you have `your_static_ip` updated, run
@@ -54,17 +46,19 @@ docker-compose down
 ```
 
 ### Using your QuickShell server
-#### Running your QuickShell
 Once you have your server running, now you can try using QuickShell on other machines!
+
+> make sure to replace `your_host_ip_or_domain` with your host's ip or domain in the commands below
+
+#### Mode 1: Tmux mode (temporary session)
+Best for quick access when you don't need a permanent setup. Requires tmux.
 
 Run
 ```
 wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh
 ```
 
-> make sure to replace `your_host_ip_or_domain` with your host's ip or domain
-
-#### Two modes when running QuickShell
+#### Two ways to run Tmux mode
 Due to how QuickShell is set up, the clean up script is ran when the `quickshell.sh` script is being exited.
 
 Having the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command being ran in a tmux session is safer as you won't accidentally exit the script and clean up the files needed for QuickShell.
@@ -111,6 +105,28 @@ You should then launch a new shell and run `tmux attach-session -t MyZsh` (the s
 When you are done and exited from the QuickShell session, you will need to go back to the shell you used to run the `wget -O- http://{your_host_ip_or_domain}:8000/quickshell.sh | sh` command. 
 
 To exit the script, do `Ctrl+c` and that will clean up the files.
+
+#### Mode 2: Install mode (persistent setup)
+Best for machines you'll be working on for a long time. Does not require tmux.
+
+Run
+```
+wget -O- http://{your_host_ip_or_domain}:8000/quickshell_install.sh | sh
+```
+
+This will:
+- Back up your existing config files (`.bashrc`, `.zshrc`, `.cshrc`, `.vimrc`, `.tmux.conf`) to `~/.quickshell_backup/`
+- Replace them with your QuickShell configs
+- Open a new shell to start using your personalized environment
+
+When you're done (e.g., handing the machine to someone else), restore the original configs by running:
+```
+~/.quickshell_backup/quickshell_restore.sh
+```
+
+This will restore all original config files and remove everything QuickShell added. If a config file didn't exist before QuickShell was installed, it will be removed.
+
+> Note: You cannot run install mode twice. If you want to reinstall, run the restore script first.
 
 ### Setting up your own environment
 All the personalized config files are in the `my_files` directory.
