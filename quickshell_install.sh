@@ -134,8 +134,11 @@ mv "$tmpfile" "$target"
 echo ""
 echo "QuickShell installed successfully!"
 echo ""
-echo "Open a new shell to use your personalized environment."
-echo ""
 echo "To uninstall and restore your original configs, run:"
 echo ""
 echo "  $BACKUP_DIR/quickshell_restore.sh"
+echo ""
+
+# Launch a new interactive shell so configs take effect immediately
+echo "Launching a new shell with your configs..."
+exec "$SHELL" < /dev/tty
