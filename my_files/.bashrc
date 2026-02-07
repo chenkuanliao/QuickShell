@@ -15,13 +15,15 @@ if ! shopt -oq posix; then
   fi
 fi
 # Enable case-insensitive completion
-bind "set completion-ignore-case on"
-# Show completion list automatically
-bind "set show-all-if-ambiguous on"
-bind "set show-all-if-unmodified on"
-# Configure file completion
-complete -d cd
-complete -f
+if [ -n "$BASH_VERSION" ] && echo "$-" | grep -q i; then
+  bind "set completion-ignore-case on"
+  # Show completion list automatically
+  bind "set show-all-if-ambiguous on"
+  bind "set show-all-if-unmodified on"
+  # Configure file completion
+  complete -d cd
+  complete -f
+fi
 
 # my alias 
 alias hi="echo 'hi there, this is a testing commend to see if this works'"
