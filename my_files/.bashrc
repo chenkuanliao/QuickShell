@@ -42,3 +42,6 @@ alias ll='ls -alF'
 htmux() {
     grep -A 1 "$1" "$MY_FILES/helperTmux.txt"
 }
+
+# QuickShell restore alias
+alias qsrestore='$HOME/.quickshell_backup/quickshell_restore.sh'

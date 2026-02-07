@@ -46,3 +46,6 @@ alias gpush="git push"
 
 # helper tools
 alias htmux='function _helper() { grep -A 1 "$1" "$MY_FILES/helperTmux.txt"; }; _helper'
+
+# QuickShell restore alias
+alias qsrestore='$HOME/.quickshell_backup/quickshell_restore.sh'

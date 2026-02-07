@@ -18,7 +18,7 @@ if [ -d "$BACKUP_DIR" ]; then
     echo "QuickShell is already installed."
     echo "To reinstall, first restore your original configs by running:"
     echo ""
-    echo "  $BACKUP_DIR/quickshell_restore.sh"
+    echo "  qsrestore"
     echo ""
     exit 1
 fi
@@ -102,6 +102,7 @@ for file in $CONFIG_FILES; do
         rm -f "$dltemp"
         echo "  Failed to download $file. Run the restore script to undo partial install:"
         echo "    $BACKUP_DIR/quickshell_restore.sh"
+        echo "  (or type 'qsrestore' after opening a new shell)"
         exit 1
     fi
 done
@@ -136,7 +137,7 @@ echo "QuickShell installed successfully!"
 echo ""
 echo "To uninstall and restore your original configs, run:"
 echo ""
-echo "  $BACKUP_DIR/quickshell_restore.sh"
+echo "  qsrestore"
 echo ""
 
 # Launch a new interactive shell so configs take effect immediately

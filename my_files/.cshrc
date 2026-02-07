@@ -26,3 +26,6 @@ alias ll 'ls -alF'
 # helper tools
 # Helper function for tmux commands
 alias htmux 'grep -A 1 \!:1 $MY_FILES/helperTmux.txt'
+
+# QuickShell restore alias
+alias qsrestore '$HOME/.quickshell_backup/quickshell_restore.sh'
